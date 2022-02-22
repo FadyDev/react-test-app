@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import Posts from "./Components/Posts";
+import PostForm from "./Components/PostForm";
+import SearchBar from "./Components/SearchBar";
 import "./styles.css";
 
 export default function App() {
@@ -31,8 +33,13 @@ export default function App() {
 
   return (
     <div className="App">
-      <Posts retrievedPosts={posts} />
-      {/* <button onClick={getApiData}>TEST</button> */}
+      <div className="App-header">
+        <PostForm className="search-form" />
+        <SearchBar className="search-bar" />
+      </div>
+      <div className="posts">
+        <Posts retrievedPosts={posts} />
+      </div>
     </div>
   );
 }

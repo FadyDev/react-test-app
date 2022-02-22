@@ -1,0 +1,25 @@
+
+.post-form__controls {
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.post-form__control label {
+  font-weight: bold;
+  color: #f2f2f2;
+  display: block;
+}
+
+.post-form__control > * {
+  font: inherit;
+  padding: 0.5rem;
+  width: 50vw;
+}
+.post-input {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.post-form__actions {
+  text-align: right;
+}
