@@ -4,10 +4,11 @@ import Posts from "./Components/Posts";
 import PostForm from "./Components/PostForm";
 import SearchBar from "./Components/SearchBar";
 import "./styles.css";
-
+let postsRepo = [];
 export default function App() {
   const MESSAGE_CONTENT = "Posts";
   const [posts, setPosts] = useState([]);
+  const [isSaved, setIsSaved] = useState(false);
   const [message, setMessage] = useState(MESSAGE_CONTENT);
 
   const getApiData = async () => {
@@ -44,11 +45,29 @@ export default function App() {
     });
   };
 
+  const postsSearchHandler = (searchString) => {
+    if (searchString !== "") {
+      if (!isSaved) {
+        postsRepo = [...posts];
+        setIsSaved(true);
+      }
+      const searchResults = posts.filter((post) =>
+        post.title.toLowerCase().includes(searchString.toLowerCase())
+      );
+      setPosts(searchResults);
+      setMessage(`${MESSAGE_CONTENT} (${searchResults.length})`);
+    } else {
+      setPosts(postsRepo);
+      setMessage(`${MESSAGE_CONTENT} (${postsRepo.length})`);
+      setIsSaved(false);
+    }
+  };
+
   return (
     <div className="App">
       <div className="App-header">
         <PostForm className="search-form" onAddPost={addPostHandler} />
-        <SearchBar className="search-bar" />
+        <SearchBar className="search-bar" onSearch={postsSearchHandler} />
       </div>
       <div className="posts">
         <div>
