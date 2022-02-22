@@ -15,8 +15,8 @@ import Accordion from 'react-bootstrap/Accordion';
 import "./Post.css";
 
 function Post(props) {
-  const deletePost = (id) => {
-    props.deleteItem(id);
+  const deletePostHandler = () => {
+    props.onDeletePost(props.postId);
   };
   return (
       <Accordion className='post'>
@@ -25,7 +25,7 @@ function Post(props) {
           <Accordion.Body className='post-body'>{props.postBody}
           <button
             className='delete-btn btn btn-danger'
-            onClick={() => deletePost(props.postId)}
+            onClick={deletePostHandler}
           >
             
             Delete post

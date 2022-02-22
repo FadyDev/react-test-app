@@ -13,6 +13,7 @@
   flex-direction: row;
   justify-content:space-around;
   background-color: #2b6777 ;
+  margin-bottom: 1rem;
 }
 .post-form {
   align-self: center;

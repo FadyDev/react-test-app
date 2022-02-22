@@ -6,39 +6,55 @@ import SearchBar from "./Components/SearchBar";
 import "./styles.css";
 
 export default function App() {
+  const MESSAGE_CONTENT = "Posts";
   const [posts, setPosts] = useState([]);
-
-  // const getApiData = async () => {
-  //   const response = await Axios.get(
-  //     "https://jsonplaceholder.typicode.com/posts"
-  //   ).catch((err) => {
-  //     console.error(err);
-  //   });
-  //   response.data ? setPosts(response.data) : console.log("Data not found!");
-  //   console.log(posts);
-  // };
+  const [message, setMessage] = useState(MESSAGE_CONTENT);
 
   const getApiData = async () => {
     const response = await Axios.get(
       "https://jsonplaceholder.typicode.com/posts"
     ).catch((err) => {
       console.error(err);
+      setMessage(err.message);
+      setPosts([]);
     });
-    setPosts(response.data);
+    if (response.data) {
+      setPosts(response.data);
+      setMessage(`${MESSAGE_CONTENT} (${response.data.length})`);
+    } else {
+      setMessage("No posts were found");
+    }
   };
-
   useEffect(() => {
     getApiData();
   }, []);
 
+  const addPostHandler = (post) => {
+    setPosts((prevPosts) => {
+      const updatedPostList = [post, ...prevPosts];
+      setMessage(`${MESSAGE_CONTENT} (${updatedPostList.length})`);
+      return updatedPostList;
+    });
+  };
+  const deletePostHandler = (id) => {
+    setPosts((prevPosts) => {
+      const filteredPosts = prevPosts.filter((post) => post.id !== id);
+      setMessage(`${MESSAGE_CONTENT} (${filteredPosts.length})`);
+      return filteredPosts;
+    });
+  };
+
   return (
     <div className="App">
       <div className="App-header">
-        <PostForm className="search-form" />
+        <PostForm className="search-form" onAddPost={addPostHandler} />
         <SearchBar className="search-bar" />
       </div>
       <div className="posts">
-        <Posts retrievedPosts={posts} />
+        <div>
+          <h3>{message}</h3>
+        </div>
+        <Posts retrievedPosts={posts} deletePost={deletePostHandler} />
       </div>
     </div>
   );
