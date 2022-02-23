@@ -1,4 +1,5 @@
 # react-test-app
+![image](https://user-images.githubusercontent.com/21091471/155248739-29f340ba-7f35-49f2-b289-3c74977513d4.png)
 
 ### Motivation:
 
