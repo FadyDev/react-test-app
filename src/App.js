@@ -5,8 +5,10 @@ import PostForm from "./Components/PostForm";
 import SearchBar from "./Components/SearchBar";
 import LoadSpinner from "./Components/LoadSpinner";
 import "./styles.css";
+
 let postsRepo = [];
-let resetSearch = "";
+let resetSearch = ""; //Workaround .. could be done in a better way
+
 export default function App() {
   const MESSAGE_CONTENT = "Posts";
   const [posts, setPosts] = useState([]);
