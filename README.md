@@ -20,7 +20,7 @@ The main stack used consists of React with JavaScript along with some dependenci
 ### Trade offs and Things that could have been done better
 
 The implementation took me 3 long sessions to finish (I am a full-time employee right now), with more time I could have add more features and more error handling. Moreover, I could also used TypeScript as the development language but it is still a learn in progress. Maybe I will concider to re-implement the same app using TypeScript and Angular very soon.
-I had to trade off the genarl look of the app in favor of the logic. with more time I would do more styling and my be some extra features too. But sure I will revist the project after practicing some more missing concepts. One more trade off was the components planning, as with more time I could planned to divide a couple of components into smaller reusable components.
+I had to trade off the genarl look of the app in favor of the logic. with more time I would do more styling and may be some extra features too. But sure I will revist the project after practicing some more missing concepts. One more trade off was the components planning, as with more time I could planned to divide a couple of components into smaller reusable components.
 
 ### Production
 This application cannot be considered production-ready. I needs firstly to be enhanced with logging and monitoring mechanisms. Taking into consideration my current level of experience with such tools along with the time constraint, Production readiness was a bit hard be achieved.
