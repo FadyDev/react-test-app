@@ -8,7 +8,12 @@ function SearchBar(props) {
   };
   return (
     <div className="search-bar">
-      <input type="text" placeholder="Search..." onChange={searchHandler} />
+      <input
+        type="text"
+        placeholder="Search..."
+        value={props.value}
+        onChange={searchHandler}
+      />
     </div>
   );
 }
